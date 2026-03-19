@@ -15,7 +15,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.1;
+renderer.toneMappingExposure = 0.9; // was 1.1 — slightly reduced to prevent over-bright highlights
 document.getElementById('canvas-container').appendChild(renderer.domElement);
 
 window.addEventListener('resize', () => {
@@ -30,7 +30,7 @@ scene.background = new THREE.Color(0x030610);
 // Ambient + directional light
 const ambient = new THREE.AmbientLight(0x223366, 1.5);
 scene.add(ambient);
-const dirLight = new THREE.DirectionalLight(0xffffff, 2);
+const dirLight = new THREE.DirectionalLight(0xffffff, 1.4); // was 2 — reduced to tone down overall scene brightness
 dirLight.position.set(10, 20, 10);
 scene.add(dirLight);
 

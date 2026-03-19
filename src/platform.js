@@ -70,7 +70,7 @@ void main(){
   float n=(snoise(vWorldPos*noiseScale+time*.5)+1.)*.5;
   if(n<dissolveProgress) discard;
   float edge=smoothstep(dissolveProgress,dissolveProgress+edgeWidth,n);
-  vec3 col=mix(edgeColor*3.,platformColor,edge);
+  vec3 col=mix(edgeColor*1.5,platformColor,edge); // was edgeColor*3. — reduced to prevent edge glow from over-driving bloom
   float light=dot(vNormal,normalize(vec3(1.,2.,1.)))*.5+.5;
   col*=light;
   gl_FragColor=vec4(col,1.);
@@ -83,7 +83,7 @@ export const PLATFORM_TYPES = {
   crumble:    { color: new THREE.Color(0.9,  0.25, 0.1),  dissolveTime: 1.5, friction: 1 },
   bounce:     { color: new THREE.Color(1.0,  0.8,  0.0),  dissolveTime: 3.0, friction: 1 },
   moving:     { color: new THREE.Color(0.65, 0.2,  1.0),  dissolveTime: 4.0, friction: 1 },
-  checkpoint: { color: new THREE.Color(0.9,  0.95, 1.0),  dissolveTime: 999, friction: 1 },
+  checkpoint: { color: new THREE.Color(0.3,  0.5,  0.85), dissolveTime: 999, friction: 1 }, // was (0.9, 0.95, 1.0) — near-white caused sun-like bloom glare on first platform
 };
 
 let _matCache = {};

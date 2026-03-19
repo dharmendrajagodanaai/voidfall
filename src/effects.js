@@ -38,9 +38,9 @@ export class Effects {
 
     const bloomPass = new UnrealBloomPass(
       new THREE.Vector2(window.innerWidth, window.innerHeight),
-      1.2,   // strength
-      0.8,   // radius
-      0.6    // threshold
+      0.55,  // strength  (was 1.2 — caused sun-like glare on bright platforms)
+      0.35,  // radius    (was 0.8 — bloom was spreading too wide)
+      0.75   // threshold (was 0.6 — lower threshold caused too many surfaces to bloom)
     );
     this.composer.addPass(bloomPass);
     this.bloomPass = bloomPass;
