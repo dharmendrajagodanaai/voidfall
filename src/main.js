@@ -15,7 +15,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 0.9; // was 1.1 — slightly reduced to prevent over-bright highlights
+renderer.toneMappingExposure = 0.8; // was 0.9 — further reduced to prevent bloom glare on platforms
 document.getElementById('canvas-container').appendChild(renderer.domElement);
 
 window.addEventListener('resize', () => {
