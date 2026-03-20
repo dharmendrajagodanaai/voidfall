@@ -146,7 +146,7 @@ export class World {
     // Base cylinder
     const baseGeo = new THREE.CylinderGeometry(0.8, 1.2, 2, 8);
     const baseMat = new THREE.MeshStandardMaterial({
-      color: 0xffaa00, emissive: 0xff6600, emissiveIntensity: 2.0,
+      color: 0xffaa00, emissive: 0xff6600, emissiveIntensity: 1.2,
       metalness: 0.8, roughness: 0.2,
     });
     this.beaconMesh = new THREE.Mesh(baseGeo, baseMat);
@@ -164,7 +164,7 @@ export class World {
     this.scene.add(this.beaconBeam);
 
     // Point light
-    this.beaconLight = new THREE.PointLight(0xffaa00, 8, 25);
+    this.beaconLight = new THREE.PointLight(0xffaa00, 4, 25);
     this.beaconLight.position.set(bx, by + 3, bz);
     this.scene.add(this.beaconLight);
 
@@ -229,7 +229,7 @@ export class World {
     const cCount = 30;
     const geo = new THREE.OctahedronGeometry(0.22, 0);
     const mat = new THREE.MeshStandardMaterial({
-      color: 0xffffff, emissive: 0x88aaff, emissiveIntensity: 3.0,
+      color: 0xffffff, emissive: 0x88aaff, emissiveIntensity: 1.5,
       metalness: 0.4, roughness: 0.2,
     });
     this._collectiblesIM = new THREE.InstancedMesh(geo, mat, cCount);

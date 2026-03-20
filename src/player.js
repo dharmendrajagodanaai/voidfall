@@ -32,7 +32,7 @@ export class Player {
     const mat = new THREE.MeshStandardMaterial({
       color: 0xffffff,
       emissive: 0x88aaff,
-      emissiveIntensity: 2.5,
+      emissiveIntensity: 1.2,
       metalness: 0.2,
       roughness: 0.3,
       wireframe: false,
@@ -55,7 +55,7 @@ export class Player {
     this.mesh.add(this.glow);
 
     // Point light attached to player
-    this._light = new THREE.PointLight(0x6688ff, 3, 8);
+    this._light = new THREE.PointLight(0x6688ff, 1.5, 8);
     this.mesh.add(this._light);
   }
 
@@ -129,17 +129,17 @@ export class Player {
 
     // Glow pulse
     const pulse = Math.sin(totalTime * 4) * 0.3 + 1;
-    this.glow.material.opacity = 0.08 + pulse * 0.06;
-    this._light.intensity = 2 + pulse;
+    this.glow.material.opacity = 0.05 + pulse * 0.03;
+    this._light.intensity = 1.0 + pulse * 0.5;
 
     // Update trail
     this._updateTrail(physPos, totalTime);
 
     // Dash flash
     if (this.input.dash) {
-      this.mesh.material.emissiveIntensity = 6;
+      this.mesh.material.emissiveIntensity = 3;
     } else {
-      this.mesh.material.emissiveIntensity = 2.5;
+      this.mesh.material.emissiveIntensity = 1.2;
     }
   }
 
